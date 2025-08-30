@@ -6,184 +6,115 @@
   <title>กำลังเชื่อมต่อเซิร์ฟเวอร์...</title>
   <style>
     :root {
-      --bg1:#0b0b0b; 
-      --bg2:#1a1a1a; 
-      --acc:#00e6ac; 
-      --soft:#ffffff22; 
-      --text:#f5f5f5; 
-      --sub:#bdbdbd;
+      --bg1:#0b0b0b; --bg2:#1a1a1a; --acc:#00e6ac;
+      --soft:#ffffff22; --text:#f5f5f5; --sub:#bdbdbd;
     }
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html,body { height: 100%; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: radial-gradient(1200px 800px at 10% 10%, #181818, transparent),
-                  radial-gradient(1000px 700px at 90% 90%, #111, transparent),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      display: flex; justify-content: center; align-items: center; 
-      padding: 24px; overflow: hidden;
-    }
-    .card {
-      width: min(520px, 92vw);
-      background: rgba(20,20,20,0.8);
-      backdrop-filter: blur(14px) saturate(140%);
-      border: 1px solid #2a2a2a;
-      border-radius: 24px;
-      padding: 36px 28px;
-      text-align: center;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-      animation: fadeIn 0.6s ease-out;
-    }
-    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
-
-    .ring {
-      width: 120px; height: 120px; margin: 0 auto 18px;
-      border: 12px solid var(--soft); border-top-color: var(--acc);
-      border-radius: 50%;
-      animation: spin 0.9s linear infinite;
-      box-shadow: 0 0 20px rgba(0,230,172,0.5);
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    h1 {
-      font-size: 24px; font-weight: 600;
-      margin: 6px 0 6px; letter-spacing: 0.5px;
-    }
-    p {
-      font-size: 15px; color: var(--sub);
+    body.light {
+      --bg1:#fafafa; --bg2:#f0f0f0; --acc:#007aff;
+      --soft:#00000022; --text:#1a1a1a; --sub:#555;
     }
 
-    .bar {
-      margin: 20px auto 14px; width: 100%; height: 10px;
-      border-radius: 999px; background: #2a2a2a; overflow: hidden; position: relative;
-    }
-    .bar > i {
-      display:block; height:100%; width:30%; 
-      background: linear-gradient(90deg, #ffffff33, var(--acc));
-      border-radius: 999px;
-      animation: progress 1.8s ease-in-out infinite;
-    }
-    @keyframes progress { 
-      0%{ margin-left: -30%; } 
-      50%{ margin-left: 50%; } 
-      100%{ margin-left: 120%; } 
-    }
-
-    .list {
-      text-align:left; margin-top:12px; font-size:14px; color:#cfcfcf;
-      padding: 0 4px; line-height: 1.4em;
-      max-height: 120px; overflow-y:auto;
-    }
-    .list::-webkit-scrollbar { width: 6px; }
-    .list::-webkit-scrollbar-thumb { background: #333; border-radius: 6px; }
-
-    .actions { display:flex; gap:12px; justify-content:center; margin-top:18px; }
-    .btn {
-      appearance:none; border:1px solid #333; color:#fff; background:#202020;
-      padding:11px 18px; border-radius:12px; cursor:pointer;
-      transition:.2s ease; font-size:14px; font-weight:500;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .btn:hover { transform: translateY(-1px); border-color:#444; background:#2a2a2a; }
-    .btn:active { transform: scale(0.96); }
-
-    .muted {
-      color:#a8a8a8; font-size:12px; margin-top:10px; opacity:0.85;
-    }
-
-    /* DevTool Box */
-    .devtool {
-      margin-top: 30px; padding: 15px; border-radius: 12px;
-      background: #1c1c1c; font-size: 13px; color: #ddd;
-    }
-    .devtool input {
-      width: 100%; padding: 6px; margin: 6px 0;
-      background: #111; border: 1px solid #333; color: #0f0;
-      border-radius: 6px;
-    }
-    .devtool button {
-      padding: 6px 10px; margin: 4px; border-radius: 6px;
-      background: #222; color: #fff; border: 1px solid #444; cursor: pointer;
-      transition: background .2s ease;
-    }
-    .devtool button:hover { background: #333; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));
+      color:var(--text);display:flex;justify-content:center;align-items:center;height:100vh;transition:.3s;}
+    .card{width:min(520px,92vw);background:rgba(20,20,20,0.8);backdrop-filter:blur(14px);
+      padding:36px 28px;border-radius:24px;border:1px solid #2a2a2a;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,0.6);}
+    body.light .card{background:rgba(255,255,255,0.8);border:1px solid #ddd;}
+    .ring{width:120px;height:120px;margin:0 auto 18px;border:12px solid var(--soft);border-top-color:var(--acc);
+      border-radius:50%;animation:spin .9s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    h1{font-size:24px;font-weight:600;margin:6px 0;}
+    p{font-size:15px;color:var(--sub);}
+    .bar{margin:20px auto 14px;width:100%;height:10px;border-radius:999px;background:#2a2a2a;overflow:hidden;}
+    .bar>i{display:block;height:100%;width:30%;background:linear-gradient(90deg,#ffffff33,var(--acc));
+      border-radius:999px;animation:progress 1.8s ease-in-out infinite;}
+    @keyframes progress{0%{margin-left:-30%}50%{margin-left:50%}100%{margin-left:120%}}
+    .list{text-align:left;margin-top:12px;font-size:14px;color:#cfcfcf;padding:0 4px;max-height:120px;overflow-y:auto;}
+    body.light .list{color:#333;}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:18px;}
+    .btn{appearance:none;border:1px solid #333;color:#fff;background:#202020;
+      padding:11px 18px;border-radius:12px;cursor:pointer;transition:.2s;font-size:14px;}
+    .btn:hover{transform:translateY(-1px);border-color:#444;background:#2a2a2a;}
+    .btn:active{transform:scale(0.96);}
+    body.light .btn{background:#f8f8f8;color:#111;border:1px solid #ccc;}
+    .muted{color:#a8a8a8;font-size:12px;margin-top:10px;}
+    .theme-toggle{position:absolute;top:20px;right:20px;padding:8px 14px;border:none;border-radius:8px;
+      cursor:pointer;background:var(--acc);color:#fff;font-weight:bold;transition:.3s;}
+    body.light .theme-toggle{background:#333;color:#fff;}
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeBtn">🌙 Dark</button>
   <div class="card">
-    <div class="ring" aria-hidden="true"></div>
+    <div class="ring"></div>
     <h1>กำลังตรวจสอบเซิร์ฟเวอร์…</h1>
-    <p>ถ้าลิงก์แรกเข้าไม่ได้ 5 วินาที จะข้ามไปลิงก์ถัดไปอัตโนมัติ</p>
+    <p>ถ้าลิงก์แรกเข้าไม่ได้ 5 วินาที จะข้ามไปลิงก์ถัดไป</p>
     <div class="bar"><i></i></div>
     <div class="list" id="status"></div>
     <div class="actions">
       <button class="btn" id="skip">ข้ามไปลิงก์ถัดไป</button>
       <button class="btn" id="retry" style="display:none;">ลองใหม่อีกครั้ง</button>
     </div>
-    <div class="muted">ระบบจะพยายามเชื่อมต่อให้อัตโนมัติบน iOS / Android / Desktop</div>
+    <div class="muted">ระบบจะพยายามเชื่อมต่อให้อัตโนมัติ</div>
   </div>
 
+  <!-- 🔊 เสียงแจ้งเตือน -->
+  <audio id="beep" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" preload="auto"></audio>
+
   <script>
-    const ENCODED_URLS = [
+const ENCODED_URLS = [
   "aHR0cHM6Ly9sYW9zdmVnYXM4ODgtY2x5dm9uLnN0b3Jl",
   "aHR0cHM6Ly9sYW9zdmVnYXM4ODgtVmV5b3JhLnN0b3Jl"
 ];
+    const URLS=ENCODED_URLS.map(u=>atob(u));
+    const TIMEOUT_MS=5000;
+    const statusEl=document.getElementById('status');
+    const btnSkip=document.getElementById('skip');
+    const btnRetry=document.getElementById('retry');
+    const beep=document.getElementById('beep');
+    let leftPage=false;
 
-    const URLS = ENCODED_URLS.map(u => atob(u)); 
-    const TIMEOUT_MS = 5000;
-
-    const statusEl = document.getElementById('status');
-    const btnSkip  = document.getElementById('skip');
-    const btnRetry = document.getElementById('retry');
-    let leftPage = false;
-
-    window.addEventListener('pagehide', () => leftPage = true, { once:true });
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') leftPage = true;
-    });
+    window.addEventListener('pagehide',()=>leftPage=true,{once:true});
+    document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')leftPage=true;});
 
     function log(msg){
-      const line = document.createElement('div');
-      line.textContent = msg; statusEl.appendChild(line);
-      statusEl.scrollTop = statusEl.scrollHeight;
+      const line=document.createElement('div');
+      line.textContent=msg;statusEl.appendChild(line);
+      statusEl.scrollTop=statusEl.scrollHeight;
+    }
+
+    function playBeep(){ 
+      beep.currentTime=0; 
+      beep.play().catch(()=>{}); 
     }
 
     function tryLink(i){
-      if (i >= URLS.length) {
+      if(i>=URLS.length){
         log('❌ ไม่พบลิงก์ที่พร้อมใช้งาน');
-        document.querySelector('h1').textContent = 'เชื่อมต่อไม่สำเร็จ';
-        document.querySelector('p').textContent  = 'โปรดตรวจสอบอินเทอร์เน็ตหรือกลับมาลองใหม่ภายหลัง';
-        btnRetry.style.display = 'inline-block';
-        btnSkip.style.display  = 'none';
+        document.querySelector('h1').textContent='เชื่อมต่อไม่สำเร็จ';
+        btnRetry.style.display='inline-block';
+        btnSkip.style.display='none';
         return;
       }
-      const url = URLS[i];
+      const url=URLS[i];
       log(`⏳ กำลังลองลิงก์ ${i+1}`);
-
-      const timer = setTimeout(() => {
-        if (!leftPage) {
-          log(`⚠️ ลิงก์ ${i+1} ไม่มีการตอบกลับใน ${TIMEOUT_MS/1000}s → ข้ามไปลิงก์ถัดไป`);
-          tryLink(i+1);
-        }
-      }, TIMEOUT_MS);
-
-      try { window.top.location.href = url; } 
-      catch (e) { window.location.assign(url); }
-
-      btnSkip.onclick = () => {
-        clearTimeout(timer);
-        if (!leftPage) { log('⏩ ผู้ใช้กดข้าม ไปยังลิงก์ถัดไป'); tryLink(i+1); }
-      };
+      playBeep(); // 🔊 เล่นเสียงตอนจะเปลี่ยนลิงก์
+      const timer=setTimeout(()=>{
+        if(!leftPage){log(`⚠️ ลิงก์ ${i+1} ไม่ตอบสนอง → ข้าม`);tryLink(i+1);}
+      },TIMEOUT_MS);
+      try{window.top.location.href=url;}catch(e){window.location.assign(url);}
+      btnSkip.onclick=()=>{clearTimeout(timer);if(!leftPage){log('⏩ ข้ามไปลิงก์ถัดไป');playBeep();tryLink(i+1);}};
     }
 
-    btnRetry.onclick = () => {
-      statusEl.innerHTML = ''; leftPage = false; 
-      btnRetry.style.display='none'; btnSkip.style.display='inline-block';
-      tryLink(0);
-    };
-
+    btnRetry.onclick=()=>{statusEl.innerHTML='';leftPage=false;btnRetry.style.display='none';btnSkip.style.display='inline-block';tryLink(0);};
     tryLink(0);
+
+    // 🌗 Dark/Light Mode
+    const themeBtn=document.getElementById('themeBtn');
+    themeBtn.addEventListener('click',()=>{
+      document.body.classList.toggle('light');
+      themeBtn.textContent=document.body.classList.contains('light')?'🌞 Light':'🌙 Dark';
+    });
   </script>
 </body>
 </html>
